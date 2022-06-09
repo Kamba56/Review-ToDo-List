@@ -5,7 +5,7 @@ import { complete, checkCheck } from './check.js';
 
 const populate = (todo) => {
   const listItem = document.createElement('li');
-  listItem.classList.add('border', 'list-flex');
+  listItem.classList.add('border', 'list-flex', 'flex');
   toDoList.appendChild(listItem);
 
   const checkbox = document.createElement('input');
@@ -42,6 +42,18 @@ const populate = (todo) => {
     listItem.classList.add('yellow');
     btn2.style.display = 'block';
     btn.style.display = 'none';
+  });
+
+  document.addEventListener('click', (e) => {
+    const desc = Array.from(listItem.querySelectorAll('*'));
+    if (!desc.includes(e.target) && !text.disabled) {
+      text.disabled = true;
+      listItem.classList.remove('yellow');
+      listelement.description = text.value;
+      localStorage.setItem('list', JSON.stringify(list));
+      btn.style.display = 'block';
+      btn2.style.display = 'none';
+    }
   });
 
   btn2.addEventListener('click', () => {
