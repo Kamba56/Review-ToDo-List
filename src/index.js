@@ -18,7 +18,7 @@ const displayLi = (list) => {
         populate(listItem);
       }
     });
-  }  
+  }
 };
 
 displayLi(list);
